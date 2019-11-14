@@ -1,0 +1,9 @@
+name: Setup Graphviz environment
+description: Setup a graphviz environment and add it to the PATH.
+author: kamiazya <yuki@kamiazya.tech>
+branding:
+  icon: arrow-down-circle
+  color: gray-dark
+runs:
+  using: node12
+  main: lib/setup-graphviz.js
