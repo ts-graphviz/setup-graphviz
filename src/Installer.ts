@@ -27,7 +27,14 @@ export class Installer {
 
   private async getAptInstall() {
     await exec('sudo', ['apt-get', 'update']);
-    await exec('sudo', ['apt-get', 'install', 'graphviz']);
+    await exec('sudo', [
+      'apt-get',
+      'install',
+      'graphviz',
+      // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
+      'libgraphviz-dev',
+      'pkg-config',
+    ]);
   }
 
   private async chocoInstall() {
