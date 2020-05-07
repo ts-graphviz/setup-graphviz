@@ -1,11 +1,22 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/kamiazya/setup-graphviz/badge)](https://www.codefactor.io/repository/github/kamiazya/setup-graphviz)
+# `ts-graphviz/setup-graphviz` action
 
-# `setup-graphviz` action
-
-This action setup a graphviz environment.
+GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
 
 ## Example usage
 
 ```yml
-uses: kamiazya/setup-graphviz@v1
+name: Graphviz CI
+on: [push]
+jobs:
+  test:
+    name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Graphviz
+      uses: ts-graphviz/setup-graphviz@v1
+    ...
 ```

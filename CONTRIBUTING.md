@@ -40,6 +40,7 @@ Comment out node_modules in .gitignore and create a releases/v1 branch
 ```plain
 # comment out in distribution branches
 # node_modules/
+# lib
 ```
 
 ```bash
@@ -63,7 +64,7 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now validate the action by referencing the releases/v1 branch
 
 ```yaml
-uses: kamiazya/setup-graphviz@releases/v1
+uses: ts-graphviz/setup-graphviz@releases/v1
 with:
   milliseconds: 1000
 ```
@@ -75,5 +76,5 @@ See the [actions tab](https://github.com/actions/javascript-action/actions) for 
 After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and tested action
 
 ```yaml
-uses: kamiazya/setup-graphviz@v1
+uses: ts-graphviz/setup-graphviz@v1
 ```

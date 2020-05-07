@@ -1,6 +1,9 @@
 # See CONTRIBUTING.md
-node_modules/
 
+# COMMENT OUT START
+node_modules/
+lib
+# COMMENT OUT END
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
