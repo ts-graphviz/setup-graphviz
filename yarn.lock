@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@actions/core@^1.2.0", "@actions/core@^1.2.6":
+"@actions/core@^1.2.3", "@actions/core@^1.2.6":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.2.6.tgz#a78d49f41a4def18e88ce47c2cac615d5694bf09"
   integrity sha512-ZQYitnqiyBc3D+k7LsgSBmMDVkOVidaagDG7j3fOym77jNunWRuYx7VSHa9GNfFZh+zh61xsCjRj4JxMZlDqTA==
@@ -26,12 +26,12 @@
   resolved "https://registry.yarnpkg.com/@actions/io/-/io-1.0.2.tgz#2f614b6e69ce14d191180451eb38e6576a6e6b27"
   integrity sha512-J8KuFqVPr3p6U8W93DOXlXW6zFvrQAJANdS+vw0YhusLIq+bszW8zmK2Fh1C2kDPX8FMvwIl1OUcFgvJoXLbAg==
 
-"@actions/tool-cache@^1.1.2":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@actions/tool-cache/-/tool-cache-1.3.4.tgz#2d2e3d109696edc7c12b0bd47ab6f66446428246"
-  integrity sha512-1Pfz4vDbKzqsWOi5CdNl377cwBNfsNrV3Wy8i94mw+49T+6JVqAH3gtFj/Woe93zyvlvzqM0rmQlPh5+jvKLag==
+"@actions/tool-cache@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@actions/tool-cache/-/tool-cache-1.6.0.tgz#5b425db2d642df65dd0d6bcec0d84dcdbca3f80d"
+  integrity sha512-+fyEBImPD3m5I0o6DflCO0NHY180LPoX8Lo6y4Iez+V17kO8kfkH0VHxb8mUdmD6hn9dWA9Ch1JA20fXoIYUeQ==
   dependencies:
-    "@actions/core" "^1.2.0"
+    "@actions/core" "^1.2.3"
     "@actions/exec" "^1.0.0"
     "@actions/http-client" "^1.0.8"
     "@actions/io" "^1.0.1"
