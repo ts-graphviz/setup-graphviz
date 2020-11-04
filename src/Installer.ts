@@ -26,9 +26,8 @@ export class Installer {
   }
 
   private async getAptInstall() {
-    await exec('sudo', ['apt-get', 'update']);
-    await exec('sudo', [
-      'apt-get',
+    await exec('apt-get', ['update']);
+    await exec('apt-get', [
       'install',
       'graphviz',
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
