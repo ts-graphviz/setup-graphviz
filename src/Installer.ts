@@ -22,21 +22,21 @@ export class Installer {
 
   private async brewInstall() {
     await exec('brew', ['update']);
-    await exec('brew', ['install', 'graphviz']);
+    await exec('brew', ['install', 'graphviz@3.0.0']);
   }
 
   private async getAptInstall() {
     await exec('apt-get', ['update']);
     await exec('apt-get', [
       'install',
-      'graphviz',
+      'graphviz=3.0.0',
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
-      'libgraphviz-dev',
+      'libgraphviz-dev=2.42.2',
       'pkg-config',
     ]);
   }
 
   private async chocoInstall() {
-    await exec('choco', ['install', 'graphviz']);
+    await exec('choco', ['install', 'graphviz', '--version=2.49.3']);
   }
 }
