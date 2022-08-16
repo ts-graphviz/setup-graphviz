@@ -12,8 +12,8 @@
     "setup"
   ],
   "scripts": {
-    "lint": "eslint src && prettier --check 'src/**/*.ts'",
-    "format": "prettier --write 'src/**/*.ts'",
+    "lint": "eslint src && prettier --check src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
     "build": "tsc",
     "test": "jest"
   },
