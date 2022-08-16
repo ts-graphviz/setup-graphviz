@@ -1,4 +1,4 @@
-import { Installer } from '../Installer';
+import { Installer } from '../Installer.js';
 
 describe('class Installer', () => {
   let installer: Installer;
@@ -20,6 +20,7 @@ describe('class Installer', () => {
 
       it('brewInstall method called on "darwin" platform', async () => {
         const brewInstall = jest.fn();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).brewInstall = brewInstall;
 
         await installer.get();
@@ -35,6 +36,7 @@ describe('class Installer', () => {
 
       it('getAptInstall method called on "linux" platform', async () => {
         const getAptInstall = jest.fn();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).getAptInstall = getAptInstall;
 
         await installer.get();
@@ -50,6 +52,7 @@ describe('class Installer', () => {
 
       it('chocoInstall method called on "win32" platform', async () => {
         const chocoInstall = jest.fn();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).chocoInstall = chocoInstall;
 
         await installer.get();
@@ -69,9 +72,9 @@ describe('class Installer', () => {
       'cygwin',
       'netbsd',
     ];
-    test.each(unsupportedPlatforms)('"%s" is not supported', (platform: NodeJS.Platform) => {
+    test.each(unsupportedPlatforms)('"%s" is not supported', async (platform: NodeJS.Platform) => {
       setPlatform(platform);
-      expect(installer.get()).rejects.toThrow(`platform '${platform}' is not yet supported`);
+      await expect(installer.get()).rejects.toThrow(`platform '${platform}' is not yet supported`);
     });
   });
 
