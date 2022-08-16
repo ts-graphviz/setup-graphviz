@@ -25,6 +25,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "sammcj",
+      "name": "Sam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/862951?v=4",
+      "profile": "https://smcleod.net",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
