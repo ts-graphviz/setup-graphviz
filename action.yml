@@ -5,5 +5,5 @@ branding:
   icon: arrow-down-circle
   color: gray-dark
 runs:
-  using: node12
+  using: node16
   main: lib/setup-graphviz.js
