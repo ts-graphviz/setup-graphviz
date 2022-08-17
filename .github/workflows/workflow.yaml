@@ -16,7 +16,7 @@ jobs:
         version: 16.x
     - name: Install Dependencies
       run: yarn install
-    - if: matrix.os == 'windows-latest'
+    - if: matrix.os != 'windows-latest'
       name: Lint
       run: yarn lint
     - name: Test
