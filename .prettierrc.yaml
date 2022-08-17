@@ -4,4 +4,4 @@ semi: true
 trailingComma: all
 printWidth: 120
 bracketSpacing: true
-endOfLine: auto
+endOfLine: lf
