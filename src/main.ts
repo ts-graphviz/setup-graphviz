@@ -1,5 +1,5 @@
 import { setFailed } from '@actions/core';
-import { GraphvizInstaller } from './GraphvizInstaller.js';
+import { GraphvizInstaller } from './GraphvizInstaller';
 
 async function run() {
   try {

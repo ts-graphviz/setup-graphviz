@@ -1,4 +1,4 @@
-import { GraphvizInstaller } from '../GraphvizInstaller.js';
+import { GraphvizInstaller } from '../GraphvizInstaller';
 
 describe('class GraphvizInstaller', () => {
   let installer: GraphvizInstaller;
