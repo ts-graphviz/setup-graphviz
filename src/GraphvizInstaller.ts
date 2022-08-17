@@ -26,9 +26,9 @@ export class GraphvizInstaller {
   }
 
   private async getAptInstall() {
-    await exec('apt-get', ['-y', 'update']);
-    await exec('apt-get', [
-      '-y',
+    await exec('sudo', ['apt-get', 'update']);
+    await exec('sudo', [
+      'apt-get',
       'install',
       'graphviz',
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
