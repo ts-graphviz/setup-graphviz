@@ -4,6 +4,24 @@ author: kamiazya <yuki@kamiazya.tech>
 branding:
   icon: arrow-down-circle
   color: gray-dark
+inputs:
+  ubuntu-graphviz-version:
+    description: |-
+      Graphviz version on Ubuntu.
+    required: false
+  ubuntu-libgraphvizdev-version:
+    description: |-
+      libgraphviz-dev version on Ubuntu.
+    required: false
+  macos-graphviz-version:
+    description: |-
+      Graphviz version on macOS.
+    required: false
+  windows-graphviz-version:
+    description: |-
+      Graphviz version on Windows.
+    required: false
+
 runs:
   using: node16
   main: lib/main.js
