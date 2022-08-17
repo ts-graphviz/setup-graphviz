@@ -1,7 +1,7 @@
-import { Installer } from '../Installer.js';
+import { GraphvizInstaller } from '../GraphvizInstaller.js';
 
-describe('class Installer', () => {
-  let installer: Installer;
+describe('class GraphvizInstaller', () => {
+  let installer: GraphvizInstaller;
   const originalPlatform = process.platform;
 
   const setPlatform = (platform: NodeJS.Platform) => {
@@ -9,7 +9,7 @@ describe('class Installer', () => {
   };
 
   beforeEach(() => {
-    installer = new Installer();
+    installer = new GraphvizInstaller();
   });
 
   describe('Supported platforms', () => {

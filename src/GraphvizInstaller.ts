@@ -1,6 +1,6 @@
 import { exec } from '@actions/exec';
 
-export class Installer {
+export class GraphvizInstaller {
   public async get() {
     await this.install();
   }
