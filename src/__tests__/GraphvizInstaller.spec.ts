@@ -33,60 +33,6 @@ describe('class GraphvizInstaller', () => {
 
         expect(brewInstall.mock.calls.length).toBe(1);
       });
-
-      describe('inputs works', () => {
-        test('graphviz version not seted', async () => {
-          (getInput as jest.Mock).mockReturnValue('');
-          const execSpy = jest.spyOn(exec, 'exec');
-
-          await installer.get();
-
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
-              "brew",
-              Array [
-                "update",
-              ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
-              "brew",
-              Array [
-                "install",
-                "graphviz",
-              ],
-            ]
-          `);
-        });
-
-        test('graphviz version seted to "1.1.1"', async () => {
-          (getInput as jest.Mock).mockReturnValue('1.1.1');
-          const execSpy = jest.spyOn(exec, 'exec');
-
-          await installer.get();
-
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
-              "brew",
-              Array [
-                "update",
-              ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
-              "brew",
-              Array [
-                "install",
-                "graphviz@1.1.1",
-              ],
-            ]
-          `);
-        });
-      });
     });
 
     describe('Work on "linux"', () => {

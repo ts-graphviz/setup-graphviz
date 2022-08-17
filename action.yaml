@@ -7,19 +7,15 @@ branding:
 inputs:
   ubuntu-graphviz-version:
     description: |-
-      Graphviz version on Ubuntu.
+      graphviz version on Ubuntu.
     required: false
   ubuntu-libgraphvizdev-version:
     description: |-
       libgraphviz-dev version on Ubuntu.
     required: false
-  macos-graphviz-version:
-    description: |-
-      Graphviz version on macOS.
-    required: false
   windows-graphviz-version:
     description: |-
-      Graphviz version on Windows.
+      graphviz version on Windows.
     required: false
 
 runs:

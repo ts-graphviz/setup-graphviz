@@ -22,11 +22,10 @@ export class GraphvizInstaller {
   }
 
   private async brewInstall() {
-    const graphvizVersion = getInput('macos-graphviz-version');
     await exec('brew', ['update']);
     await exec('brew', [
       'install',
-      graphvizVersion ? `graphviz@${graphvizVersion}` : 'graphviz',
+      'graphviz',
     ]);
   }
 
