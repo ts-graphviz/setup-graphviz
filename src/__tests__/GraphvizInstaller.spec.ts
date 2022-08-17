@@ -1,3 +1,8 @@
+jest.mock('@actions/core');
+jest.mock('@actions/exec');
+
+import { getInput } from '@actions/core';
+import * as exec from '@actions/exec';
 import { GraphvizInstaller } from '../GraphvizInstaller';
 
 describe('class GraphvizInstaller', () => {
@@ -10,6 +15,7 @@ describe('class GraphvizInstaller', () => {
 
   beforeEach(() => {
     installer = new GraphvizInstaller();
+    jest.clearAllMocks();
   });
 
   describe('Supported platforms', () => {
@@ -27,6 +33,60 @@ describe('class GraphvizInstaller', () => {
 
         expect(brewInstall.mock.calls.length).toBe(1);
       });
+
+      describe('inputs works', () => {
+        test('graphviz version not seted', async () => {
+          (getInput as jest.Mock).mockReturnValue('');
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "brew",
+              Array [
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "brew",
+              Array [
+                "install",
+                "graphviz",
+              ],
+            ]
+          `);
+        });
+
+        test('graphviz version seted to "1.1.1"', async () => {
+          (getInput as jest.Mock).mockReturnValue('1.1.1');
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "brew",
+              Array [
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "brew",
+              Array [
+                "install",
+                "graphviz@1.1.1",
+              ],
+            ]
+          `);
+        });
+      });
     });
 
     describe('Work on "linux"', () => {
@@ -43,6 +103,151 @@ describe('class GraphvizInstaller', () => {
 
         expect(getAptInstall.mock.calls.length).toBe(1);
       });
+
+      describe('inputs works', () => {
+        test('graphviz version not seted', async () => {
+          (getInput as jest.Mock).mockReturnValue('');
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "install",
+                "graphviz",
+                "libgraphviz-dev",
+                "pkg-config",
+              ],
+            ]
+          `);
+        });
+
+        test('input graphviz version seted to "1.1.1" and libgraphviz_dev version seted to "2.2.2"', async () => {
+          (getInput as jest.Mock).mockImplementation((input) => {
+            switch (input) {
+              case 'ubuntu-graphviz-version':
+                return '1.1.1';
+              case 'ubuntu-libgraphvizdev-version':
+                return '2.2.2';
+              default:
+                return '';
+            }
+          });
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "install",
+                "graphviz=1.1.1",
+                "libgraphviz-dev=2.2.2",
+                "pkg-config",
+              ],
+            ]
+          `);
+        });
+
+        test('input graphviz version seted to "3.3.3" and libgraphviz_dev version not seted', async () => {
+          (getInput as jest.Mock).mockImplementation((input) => {
+            switch (input) {
+              case 'ubuntu-graphviz-version':
+                return '3.3.3';
+              default:
+                return '';
+            }
+          });
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "install",
+                "graphviz=3.3.3",
+                "libgraphviz-dev",
+                "pkg-config",
+              ],
+            ]
+          `);
+        });
+
+        test('input graphviz not seted and libgraphviz_dev seted to 4.4.4', async () => {
+          (getInput as jest.Mock).mockImplementation((input) => {
+            switch (input) {
+              case 'ubuntu-libgraphvizdev-version':
+                return '4.4.4';
+              default:
+                return '';
+            }
+          });
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(2);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "update",
+              ],
+            ]
+          `);
+          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
+            Array [
+              "sudo",
+              Array [
+                "apt-get",
+                "install",
+                "graphviz",
+                "libgraphviz-dev=4.4.4",
+                "pkg-config",
+              ],
+            ]
+          `);
+        });
+      });
     });
 
     describe('Work on "win32"', () => {
@@ -58,6 +263,45 @@ describe('class GraphvizInstaller', () => {
         await installer.get();
 
         expect(chocoInstall.mock.calls.length).toBe(1);
+      });
+
+      describe('inputs works', () => {
+        test('graphviz version not seted', async () => {
+          (getInput as jest.Mock).mockReturnValue('');
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(1);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "choco",
+              Array [
+                "install",
+                "graphviz",
+              ],
+            ]
+          `);
+        });
+
+        test('graphviz version seted to "1.1.1"', async () => {
+          (getInput as jest.Mock).mockReturnValue('1.1.1');
+          const execSpy = jest.spyOn(exec, 'exec');
+
+          await installer.get();
+
+          expect(execSpy).toBeCalledTimes(1);
+          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+            Array [
+              "choco",
+              Array [
+                "install",
+                "graphviz",
+                "--version=1.1.1",
+              ],
+            ]
+          `);
+        });
       });
     });
   });
