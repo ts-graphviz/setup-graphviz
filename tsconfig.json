@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "module": "Node16",
+    "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "Node16",
+    "moduleResolution": "Node",
     "rootDir": "src",
     "outDir": "lib"
   },
