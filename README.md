@@ -1,11 +1,14 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
 
 ## Example usage
+
+With `ts-graphviz/setup-graphviz`, you can set up a GitHub Action environment
+that allows you to use `Graphviz` on all operating systems.
 
 ```yml
 name: Graphviz CI
@@ -23,6 +26,21 @@ jobs:
       uses: ts-graphviz/setup-graphviz@v1
     ...
     # In the steps below this you can use Graphviz dot command.
+```
+
+If you want a fixed version of Graphviz,
+you can specify a specific version for each operating system (not macOS).
+
+```yaml
+- name: Setup Graphviz
+  uses: ts-graphviz/setup-graphviz@v1
+  with:
+    # graphviz version on Ubuntu.
+    ubuntu-graphviz-version: '2.42.2-3build2'
+    # libgraphviz-dev version on Ubuntu.
+    ubuntu-libgraphvizdev-version: '2.42.2-3build2'
+    #  graphviz version on Windows.
+    windows-graphviz-version: '2.49.3'
 ```
 
 ## See Also
@@ -54,6 +72,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://smcleod.net"><img src="https://avatars.githubusercontent.com/u/862951?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam</b></sub></a><br /><a href="#maintenance-sammcj" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/mohawk2"><img src="https://avatars.githubusercontent.com/u/7308181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mohawk2</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amohawk2" title="Bug reports">🐛</a> <a href="#ideas-mohawk2" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/leadelngalame1611"><img src="https://avatars.githubusercontent.com/u/39901966?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leadelngalame1611</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Aleadelngalame1611" title="Bug reports">🐛</a> <a href="#ideas-leadelngalame1611" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/stunney"><img src="https://avatars.githubusercontent.com/u/609012?v=4?s=100" width="100px;" alt=""/><br /><sub><b>S. Tunney</b></sub></a><br /><a href="#ideas-stunney" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
