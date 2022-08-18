@@ -7,6 +7,9 @@ GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
 
 ## Example usage
 
+With `ts-graphviz/setup-graphviz`, you can set up a GitHub Action environment
+that allows you to use `Graphviz` on all operating systems.
+
 ```yml
 name: Graphviz CI
 on: [push]
@@ -23,6 +26,21 @@ jobs:
       uses: ts-graphviz/setup-graphviz@v1
     ...
     # In the steps below this you can use Graphviz dot command.
+```
+
+If you want a fixed version of Graphviz,
+you can specify a specific version for each operating system (not macOS).
+
+```yaml
+- name: Setup Graphviz
+  uses: ts-graphviz/setup-graphviz@v1
+  with:
+    # graphviz version on Ubuntu.
+    ubuntu-graphviz-version: '2.42.2-3build2'
+    # libgraphviz-dev version on Ubuntu.
+    ubuntu-libgraphvizdev-version: '2.42.2-3build2'
+    #  graphviz version on Windows.
+    windows-graphviz-version: '2.49.3'
 ```
 
 ## See Also

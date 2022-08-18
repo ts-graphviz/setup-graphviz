@@ -1,3 +1,4 @@
+import { getInput } from '@actions/core';
 import { exec } from '@actions/exec';
 
 export class GraphvizInstaller {
@@ -22,22 +23,32 @@ export class GraphvizInstaller {
 
   private async brewInstall() {
     await exec('brew', ['update']);
-    await exec('brew', ['install', 'graphviz']);
+    await exec('brew', [
+      'install',
+      'graphviz',
+    ]);
   }
 
   private async getAptInstall() {
+    const graphvizVersion = getInput('ubuntu-graphviz-version');
+    const libgraphvizdevVersion = getInput('ubuntu-libgraphvizdev-version');
     await exec('sudo', ['apt-get', 'update']);
     await exec('sudo', [
       'apt-get',
       'install',
-      'graphviz',
+      graphvizVersion ? `graphviz=${graphvizVersion}` : 'graphviz',
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
-      'libgraphviz-dev',
+      libgraphvizdevVersion ? `libgraphviz-dev=${libgraphvizdevVersion}` : 'libgraphviz-dev',
       'pkg-config',
     ]);
   }
 
   private async chocoInstall() {
-    await exec('choco', ['install', 'graphviz']);
+    const graphvizVersion = getInput('window-graphviz-version');
+    await exec('choco', [
+      'install',
+      'graphviz',
+      ...(graphvizVersion ? [`--version=${graphvizVersion}`]: [])
+    ]);
   }
 }
