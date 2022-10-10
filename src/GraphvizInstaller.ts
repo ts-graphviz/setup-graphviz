@@ -36,6 +36,7 @@ export class GraphvizInstaller {
     await exec('sudo', [
       'apt-get',
       'install',
+      '-y',
       graphvizVersion ? `graphviz=${graphvizVersion}` : 'graphviz',
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
       libgraphvizdevVersion ? `libgraphviz-dev=${libgraphvizdevVersion}` : 'libgraphviz-dev',
