@@ -109,6 +109,7 @@ describe('class GraphvizInstaller', () => {
               Array [
                 "apt-get",
                 "install",
+                "-y",
                 "graphviz",
                 "libgraphviz-dev",
                 "pkg-config",
@@ -140,6 +141,7 @@ describe('class GraphvizInstaller', () => {
               Array [
                 "apt-get",
                 "install",
+                "-y",
                 "graphviz",
                 "libgraphviz-dev",
                 "pkg-config",
@@ -180,6 +182,7 @@ describe('class GraphvizInstaller', () => {
               Array [
                 "apt-get",
                 "install",
+                "-y",
                 "graphviz=1.1.1",
                 "libgraphviz-dev=2.2.2",
                 "pkg-config",
@@ -218,6 +221,7 @@ describe('class GraphvizInstaller', () => {
               Array [
                 "apt-get",
                 "install",
+                "-y",
                 "graphviz=3.3.3",
                 "libgraphviz-dev",
                 "pkg-config",
@@ -256,6 +260,7 @@ describe('class GraphvizInstaller', () => {
               Array [
                 "apt-get",
                 "install",
+                "-y",
                 "graphviz",
                 "libgraphviz-dev=4.4.4",
                 "pkg-config",
