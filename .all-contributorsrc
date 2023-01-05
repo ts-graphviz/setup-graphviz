@@ -73,6 +73,16 @@
         "bug",
         "research"
       ]
+    },
+    {
+      "login": "jbms",
+      "name": "Jeremy Maitin-Shepard",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4211946?v=4",
+      "profile": "https://github.com/jbms",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
