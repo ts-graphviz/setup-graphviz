@@ -83,6 +83,16 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "mvrueden",
+      "name": "mvrueden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4202259?v=4",
+      "profile": "https://github.com/mvrueden",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
