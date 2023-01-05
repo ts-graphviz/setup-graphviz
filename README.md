@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -70,14 +70,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="http://blog.kamiazya.tech/"><img src="https://avatars0.githubusercontent.com/u/35218186?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yuki Yamazaki</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Code">💻</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Tests">⚠️</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Documentation">📖</a> <a href="#example-kamiazya" title="Examples">💡</a></td>
-    <td align="center"><a href="https://github.com/mhtb32"><img src="https://avatars3.githubusercontent.com/u/24754239?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohammad Hussein Tavakoli Bina </b></sub></a><br /><a href="#ideas-mhtb32" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://smcleod.net"><img src="https://avatars.githubusercontent.com/u/862951?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam</b></sub></a><br /><a href="#maintenance-sammcj" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/mohawk2"><img src="https://avatars.githubusercontent.com/u/7308181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mohawk2</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amohawk2" title="Bug reports">🐛</a> <a href="#ideas-mohawk2" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/leadelngalame1611"><img src="https://avatars.githubusercontent.com/u/39901966?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leadelngalame1611</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Aleadelngalame1611" title="Bug reports">🐛</a> <a href="#ideas-leadelngalame1611" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/stunney"><img src="https://avatars.githubusercontent.com/u/609012?v=4?s=100" width="100px;" alt=""/><br /><sub><b>S. Tunney</b></sub></a><br /><a href="#ideas-stunney" title="Ideas, Planning, & Feedback">🤔</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center"><a href="http://blog.kamiazya.tech/"><img src="https://avatars0.githubusercontent.com/u/35218186?v=4?s=100" width="100px;" alt="Yuki Yamazaki"/><br /><sub><b>Yuki Yamazaki</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Code">💻</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Tests">⚠️</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=kamiazya" title="Documentation">📖</a> <a href="#example-kamiazya" title="Examples">💡</a></td>
+      <td align="center"><a href="https://github.com/mhtb32"><img src="https://avatars3.githubusercontent.com/u/24754239?v=4?s=100" width="100px;" alt="Mohammad Hussein Tavakoli Bina "/><br /><sub><b>Mohammad Hussein Tavakoli Bina </b></sub></a><br /><a href="#ideas-mhtb32" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://smcleod.net"><img src="https://avatars.githubusercontent.com/u/862951?v=4?s=100" width="100px;" alt="Sam"/><br /><sub><b>Sam</b></sub></a><br /><a href="#maintenance-sammcj" title="Maintenance">🚧</a></td>
+      <td align="center"><a href="https://github.com/mohawk2"><img src="https://avatars.githubusercontent.com/u/7308181?v=4?s=100" width="100px;" alt="mohawk2"/><br /><sub><b>mohawk2</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amohawk2" title="Bug reports">🐛</a> <a href="#ideas-mohawk2" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/leadelngalame1611"><img src="https://avatars.githubusercontent.com/u/39901966?v=4?s=100" width="100px;" alt="leadelngalame1611"/><br /><sub><b>leadelngalame1611</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Aleadelngalame1611" title="Bug reports">🐛</a> <a href="#ideas-leadelngalame1611" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/stunney"><img src="https://avatars.githubusercontent.com/u/609012?v=4?s=100" width="100px;" alt="S. Tunney"/><br /><sub><b>S. Tunney</b></sub></a><br /><a href="#ideas-stunney" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://paul.kishimoto.name"><img src="https://avatars.githubusercontent.com/u/1634164?v=4?s=100" width="100px;" alt="Paul Natsuo Kishimoto"/><br /><sub><b>Paul Natsuo Kishimoto</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Akhaeru" title="Bug reports">🐛</a> <a href="#research-khaeru" title="Research">🔬</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
