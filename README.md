@@ -39,8 +39,12 @@ you can specify a specific version for each operating system (not macOS).
     ubuntu-graphviz-version: '2.42.2-3build2'
     # libgraphviz-dev version on Ubuntu.
     ubuntu-libgraphvizdev-version: '2.42.2-3build2'
+    # Skip to run apt update command on Ubuntu.
+    ubuntu-skip-apt-update: 'true' # defalt false
     #  graphviz version on Windows.
     windows-graphviz-version: '2.49.3'
+    # Skip to run brew update command on macOS.
+    macos-skip-brew-update: 'true' # defalt false
 ```
 
 ## See Also
