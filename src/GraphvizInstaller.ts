@@ -1,4 +1,4 @@
-import { getInput } from '@actions/core';
+import { getBooleanInput, getInput } from '@actions/core';
 import { exec } from '@actions/exec';
 
 export class GraphvizInstaller {
@@ -22,7 +22,10 @@ export class GraphvizInstaller {
   }
 
   private async brewInstall() {
-    await exec('brew', ['update']);
+    const skipBrewUpdate = getBooleanInput('macos-skip-brew-update');
+    if (skipBrewUpdate === false) {
+      await exec('brew', ['update']);
+    }
     await exec('brew', [
       'install',
       'graphviz',
@@ -30,9 +33,12 @@ export class GraphvizInstaller {
   }
 
   private async getAptInstall() {
+    const skipAptUpdate = getBooleanInput('ubuntu-skip-apt-update');
     const graphvizVersion = getInput('ubuntu-graphviz-version');
     const libgraphvizdevVersion = getInput('ubuntu-libgraphvizdev-version');
-    await exec('sudo', ['apt-get', 'update']);
+    if (skipAptUpdate === false) {
+      await exec('sudo', ['apt-get', 'update']);
+    }
     await exec('sudo', [
       'apt-get',
       'install',
