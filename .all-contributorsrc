@@ -63,6 +63,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "khaeru",
+      "name": "Paul Natsuo Kishimoto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1634164?v=4",
+      "profile": "https://paul.kishimoto.name",
+      "contributions": [
+        "bug",
+        "research"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -70,5 +80,6 @@
   "projectOwner": "ts-graphviz",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
