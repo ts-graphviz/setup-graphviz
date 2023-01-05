@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -82,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/jbms"><img src="https://avatars.githubusercontent.com/u/4211946?v=4?s=100" width="100px;" alt="Jeremy Maitin-Shepard"/><br /><sub><b>Jeremy Maitin-Shepard</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Ajbms" title="Bug reports">🐛</a> <a href="#ideas-jbms" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/mvrueden"><img src="https://avatars.githubusercontent.com/u/4202259?v=4?s=100" width="100px;" alt="mvrueden"/><br /><sub><b>mvrueden</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amvrueden" title="Bug reports">🐛</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=mvrueden" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
