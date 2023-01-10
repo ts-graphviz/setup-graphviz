@@ -93,6 +93,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "dhimmel",
+      "name": "Daniel Himmelstein",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1117703?v=4",
+      "profile": "https://dhimmel.com",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 7,
