@@ -21,7 +21,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Setup Graphviz
       uses: ts-graphviz/setup-graphviz@v1
     ...
@@ -40,11 +40,11 @@ you can specify a specific version for each operating system (not macOS).
     # libgraphviz-dev version on Ubuntu.
     ubuntu-libgraphvizdev-version: '2.42.2-3build2'
     # Skip to run apt update command on Ubuntu.
-    ubuntu-skip-apt-update: 'true' # defalt false
+    ubuntu-skip-apt-update: 'true' # default false
     #  graphviz version on Windows.
     windows-graphviz-version: '2.49.3'
     # Skip to run brew update command on macOS.
-    macos-skip-brew-update: 'true' # defalt false
+    macos-skip-brew-update: 'true' # default false
 ```
 
 ## See Also
