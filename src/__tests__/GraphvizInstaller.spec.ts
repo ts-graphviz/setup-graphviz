@@ -13,6 +13,14 @@ describe('class GraphvizInstaller', () => {
     Object.defineProperty(process, 'platform', { value: platform });
   };
 
+  const mockNamedInputs = (mock: jest.Mock, name: string, value: string | boolean) => {
+    mock.mockImplementation((input: string) => {
+      if (input == name)
+        return value;
+      return typeof value === 'string' ? '' : false;
+    })
+  };
+
   beforeEach(() => {
     installer = new GraphvizInstaller();
     jest.clearAllMocks();
@@ -36,7 +44,7 @@ describe('class GraphvizInstaller', () => {
 
       describe('inputs works', () => {
         test('default', async () => {
-          (getBooleanInput as jest.Mock).mockReturnValue(false);
+          mockNamedInputs(getBooleanInput as jest.Mock, 'macos-skip-brew-update', false);
           const execSpy = jest.spyOn(exec, 'exec');
 
           await installer.get();
@@ -61,7 +69,7 @@ describe('class GraphvizInstaller', () => {
           `);
         });
         test('skip brew update', async () => {
-          (getBooleanInput as jest.Mock).mockReturnValue(true);
+          mockNamedInputs(getBooleanInput as jest.Mock, 'macos-skip-brew-update', true);
           const execSpy = jest.spyOn(exec, 'exec');
 
           await installer.get();
@@ -97,7 +105,7 @@ describe('class GraphvizInstaller', () => {
 
       describe('inputs works', () => {
         test('skip apt update', async () => {
-          (getBooleanInput as jest.Mock).mockReturnValue(true);
+          mockNamedInputs(getBooleanInput as jest.Mock, 'ubuntu-skip-apt-update', true);
           const execSpy = jest.spyOn(exec, 'exec');
 
           await installer.get();
@@ -118,7 +126,7 @@ describe('class GraphvizInstaller', () => {
           `);
         });
 
-        test('graphviz version not seted', async () => {
+        test('graphviz version not set', async () => {
           (getInput as jest.Mock).mockReturnValue('');
           (getBooleanInput as jest.Mock).mockReturnValue(false);
           const execSpy = jest.spyOn(exec, 'exec');
@@ -150,7 +158,7 @@ describe('class GraphvizInstaller', () => {
           `);
         });
 
-        test('input graphviz version seted to "1.1.1" and libgraphviz_dev version seted to "2.2.2"', async () => {
+        test('input graphviz version set to "1.1.1" and libgraphviz_dev version set to "2.2.2"', async () => {
           (getInput as jest.Mock).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-graphviz-version':
@@ -191,7 +199,7 @@ describe('class GraphvizInstaller', () => {
           `);
         });
 
-        test('input graphviz version seted to "3.3.3" and libgraphviz_dev version not seted', async () => {
+        test('input graphviz version set to "3.3.3" and libgraphviz_dev version not set', async () => {
           (getInput as jest.Mock).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-graphviz-version':
@@ -230,7 +238,7 @@ describe('class GraphvizInstaller', () => {
           `);
         });
 
-        test('input graphviz not seted and libgraphviz_dev seted to 4.4.4', async () => {
+        test('input graphviz not set and libgraphviz_dev set to 4.4.4', async () => {
           (getInput as jest.Mock).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-libgraphvizdev-version':
@@ -287,7 +295,7 @@ describe('class GraphvizInstaller', () => {
       });
 
       describe('inputs works', () => {
-        test('graphviz version not seted', async () => {
+        test('graphviz version not set', async () => {
           (getInput as jest.Mock).mockReturnValue('');
           const execSpy = jest.spyOn(exec, 'exec');
 
@@ -306,7 +314,7 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('graphviz version seted to "1.1.1"', async () => {
-          (getInput as jest.Mock).mockReturnValue('1.1.1');
+          mockNamedInputs(getInput as jest.Mock, 'windows-graphviz-version', '1.1.1');
           const execSpy = jest.spyOn(exec, 'exec');
 
           await installer.get();
