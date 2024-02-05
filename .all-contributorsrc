@@ -140,6 +140,16 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "Maetveis",
+      "name": "Mészáros Gergely",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8176760?v=4",
+      "profile": "https://github.com/Maetveis",
+      "contributions": [
+        "bug",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
