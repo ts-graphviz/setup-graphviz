@@ -159,6 +159,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "stinodego",
+      "name": "Stijn de Gooijer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3502351?v=4",
+      "profile": "https://github.com/stinodego",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
