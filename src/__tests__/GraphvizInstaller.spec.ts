@@ -1,5 +1,6 @@
-jest.mock('@actions/core');
-jest.mock('@actions/exec');
+import { vi, describe, beforeEach, beforeAll, afterAll, it, test, expect, MockInstance } from 'vitest';
+vi.mock('@actions/core');
+vi.mock('@actions/exec');
 
 import { getInput, getBooleanInput } from '@actions/core';
 import * as exec from '@actions/exec';
@@ -13,7 +14,7 @@ describe('class GraphvizInstaller', () => {
     Object.defineProperty(process, 'platform', { value: platform });
   };
 
-  const mockNamedInputs = (mock: jest.Mock, name: string, value: string | boolean) => {
+  const mockNamedInputs = (mock: MockInstance, name: string, value: string | boolean) => {
     mock.mockImplementation((input: string) => {
       if (input == name)
         return value;
@@ -23,7 +24,7 @@ describe('class GraphvizInstaller', () => {
 
   beforeEach(() => {
     installer = new GraphvizInstaller();
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('Supported platforms', () => {
@@ -33,7 +34,7 @@ describe('class GraphvizInstaller', () => {
       });
 
       it('brewInstall method called on "darwin" platform', async () => {
-        const brewInstall = jest.fn();
+        const brewInstall = vi.fn();
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).brewInstall = brewInstall;
 
@@ -44,24 +45,24 @@ describe('class GraphvizInstaller', () => {
 
       describe('inputs works', () => {
         test('default', async () => {
-          mockNamedInputs(getBooleanInput as jest.Mock, 'macos-skip-brew-update', false);
-          const execSpy = jest.spyOn(exec, 'exec');
+          mockNamedInputs(getBooleanInput as unknown as MockInstance, 'macos-skip-brew-update', false);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(2);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "brew",
-              Array [
+              [
                 "update",
               ],
             ]
           `);
           expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
+            [
               "brew",
-              Array [
+              [
                 "install",
                 "graphviz",
               ],
@@ -69,16 +70,16 @@ describe('class GraphvizInstaller', () => {
           `);
         });
         test('skip brew update', async () => {
-          mockNamedInputs(getBooleanInput as jest.Mock, 'macos-skip-brew-update', true);
-          const execSpy = jest.spyOn(exec, 'exec');
+          mockNamedInputs(getBooleanInput as unknown as MockInstance, 'macos-skip-brew-update', true);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(1);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "brew",
-              Array [
+              [
                 "install",
                 "graphviz",
               ],
@@ -94,7 +95,7 @@ describe('class GraphvizInstaller', () => {
       });
 
       it('getAptInstall method called on "linux" platform', async () => {
-        const getAptInstall = jest.fn();
+        const getAptInstall = vi.fn();
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).getAptInstall = getAptInstall;
 
@@ -105,16 +106,16 @@ describe('class GraphvizInstaller', () => {
 
       describe('inputs works', () => {
         test('skip apt update', async () => {
-          mockNamedInputs(getBooleanInput as jest.Mock, 'ubuntu-skip-apt-update', true);
-          const execSpy = jest.spyOn(exec, 'exec');
+          mockNamedInputs(getBooleanInput as unknown as MockInstance, 'ubuntu-skip-apt-update', true);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(1);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "install",
                 "-y",
@@ -127,26 +128,26 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('graphviz version not set', async () => {
-          (getInput as jest.Mock).mockReturnValue('');
-          (getBooleanInput as jest.Mock).mockReturnValue(false);
-          const execSpy = jest.spyOn(exec, 'exec');
+          (getInput as unknown as MockInstance).mockReturnValue('');
+          (getBooleanInput as unknown as MockInstance).mockReturnValue(false);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(2);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "update",
               ],
             ]
           `);
           expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "install",
                 "-y",
@@ -159,7 +160,7 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('input graphviz version set to "1.1.1" and libgraphviz_dev version set to "2.2.2"', async () => {
-          (getInput as jest.Mock).mockImplementation((input) => {
+          (getInput as unknown as MockInstance).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-graphviz-version':
                 return '1.1.1';
@@ -169,25 +170,25 @@ describe('class GraphvizInstaller', () => {
                 return '';
             }
           });
-          (getBooleanInput as jest.Mock).mockReturnValue(false);
-          const execSpy = jest.spyOn(exec, 'exec');
+          (getBooleanInput as unknown as MockInstance).mockReturnValue(false);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(2);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "update",
               ],
             ]
           `);
           expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "install",
                 "-y",
@@ -200,7 +201,7 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('input graphviz version set to "3.3.3" and libgraphviz_dev version not set', async () => {
-          (getInput as jest.Mock).mockImplementation((input) => {
+          (getInput as unknown as MockInstance).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-graphviz-version':
                 return '3.3.3';
@@ -208,25 +209,25 @@ describe('class GraphvizInstaller', () => {
                 return '';
             }
           });
-          (getBooleanInput as jest.Mock).mockReturnValue(false);
-          const execSpy = jest.spyOn(exec, 'exec');
+          (getBooleanInput as unknown as MockInstance).mockReturnValue(false);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(2);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "update",
               ],
             ]
           `);
           expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "install",
                 "-y",
@@ -239,7 +240,7 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('input graphviz not set and libgraphviz_dev set to 4.4.4', async () => {
-          (getInput as jest.Mock).mockImplementation((input) => {
+          (getInput as unknown as MockInstance).mockImplementation((input) => {
             switch (input) {
               case 'ubuntu-libgraphvizdev-version':
                 return '4.4.4';
@@ -247,25 +248,25 @@ describe('class GraphvizInstaller', () => {
                 return '';
             }
           });
-          (getBooleanInput as jest.Mock).mockReturnValue(false);
-          const execSpy = jest.spyOn(exec, 'exec');
+          (getBooleanInput as unknown as MockInstance).mockReturnValue(false);
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(2);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "update",
               ],
             ]
           `);
           expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            Array [
+            [
               "sudo",
-              Array [
+              [
                 "apt-get",
                 "install",
                 "-y",
@@ -285,7 +286,7 @@ describe('class GraphvizInstaller', () => {
       });
 
       it('chocoInstall method called on "win32" platform', async () => {
-        const chocoInstall = jest.fn();
+        const chocoInstall = vi.fn();
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (installer as any).chocoInstall = chocoInstall;
 
@@ -296,16 +297,16 @@ describe('class GraphvizInstaller', () => {
 
       describe('inputs works', () => {
         test('graphviz version not set', async () => {
-          (getInput as jest.Mock).mockReturnValue('');
-          const execSpy = jest.spyOn(exec, 'exec');
+          (getInput as unknown as MockInstance).mockReturnValue('');
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(1);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "choco",
-              Array [
+              [
                 "install",
                 "graphviz",
               ],
@@ -314,16 +315,16 @@ describe('class GraphvizInstaller', () => {
         });
 
         test('graphviz version seted to "1.1.1"', async () => {
-          mockNamedInputs(getInput as jest.Mock, 'windows-graphviz-version', '1.1.1');
-          const execSpy = jest.spyOn(exec, 'exec');
+          mockNamedInputs(getInput as unknown as MockInstance, 'windows-graphviz-version', '1.1.1');
+          const execSpy = vi.spyOn(exec, 'exec');
 
           await installer.get();
 
           expect(execSpy).toBeCalledTimes(1);
           expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
-            Array [
+            [
               "choco",
-              Array [
+              [
                 "install",
                 "graphviz",
                 "--version=1.1.1",
