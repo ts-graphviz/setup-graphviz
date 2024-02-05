@@ -112,6 +112,16 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "joshstrohminger",
+      "name": "Joshua Strohminger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17883887?v=4",
+      "profile": "http://devmonstr.com",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -120,5 +130,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
