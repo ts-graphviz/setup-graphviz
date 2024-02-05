@@ -150,6 +150,15 @@
         "bug",
         "test"
       ]
+    },
+    {
+      "login": "XF-FW",
+      "name": "Xavier Francisco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98830734?v=4",
+      "profile": "https://github.com/XF-FW",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
