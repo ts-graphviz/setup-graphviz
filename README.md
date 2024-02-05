@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mvrueden"><img src="https://avatars.githubusercontent.com/u/4202259?v=4?s=100" width="100px;" alt="mvrueden"/><br /><sub><b>mvrueden</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amvrueden" title="Bug reports">🐛</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=mvrueden" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://dhimmel.com"><img src="https://avatars.githubusercontent.com/u/1117703?v=4?s=100" width="100px;" alt="Daniel Himmelstein"/><br /><sub><b>Daniel Himmelstein</b></sub></a><br /><a href="#question-dhimmel" title="Answering Questions">💬</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/deining"><img src="https://avatars.githubusercontent.com/u/18169566?v=4?s=100" width="100px;" alt="Andreas Deininger"/><br /><sub><b>Andreas Deininger</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=deining" title="Documentation">📖</a> <a href="#maintenance-deining" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/glatterf42"><img src="https://avatars.githubusercontent.com/u/83776373?v=4?s=100" width="100px;" alt="Fridolin Glatter"/><br /><sub><b>Fridolin Glatter</b></sub></a><br /><a href="#maintenance-glatterf42" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
