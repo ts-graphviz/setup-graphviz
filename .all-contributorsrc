@@ -131,6 +131,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "glatterf42",
+      "name": "Fridolin Glatter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83776373?v=4",
+      "profile": "https://github.com/glatterf42",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
