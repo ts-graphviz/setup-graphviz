@@ -122,6 +122,15 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "2bndy5",
+      "name": "Brendan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14963867?v=4",
+      "profile": "https://github.com/2bndy5",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
