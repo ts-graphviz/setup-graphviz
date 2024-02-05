@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -87,6 +87,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/deining"><img src="https://avatars.githubusercontent.com/u/18169566?v=4?s=100" width="100px;" alt="Andreas Deininger"/><br /><sub><b>Andreas Deininger</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=deining" title="Documentation">📖</a> <a href="#maintenance-deining" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://devmonstr.com"><img src="https://avatars.githubusercontent.com/u/17883887?v=4?s=100" width="100px;" alt="Joshua Strohminger"/><br /><sub><b>Joshua Strohminger</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=joshstrohminger" title="Code">💻</a> <a href="#maintenance-joshstrohminger" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/2bndy5"><img src="https://avatars.githubusercontent.com/u/14963867?v=4?s=100" width="100px;" alt="Brendan"/><br /><sub><b>Brendan</b></sub></a><br /><a href="#maintenance-2bndy5" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/glatterf42"><img src="https://avatars.githubusercontent.com/u/83776373?v=4?s=100" width="100px;" alt="Fridolin Glatter"/><br /><sub><b>Fridolin Glatter</b></sub></a><br /><a href="#maintenance-glatterf42" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
