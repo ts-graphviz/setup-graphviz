@@ -21,9 +21,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup Graphviz
-      uses: ts-graphviz/setup-graphviz@v1
+      uses: ts-graphviz/setup-graphviz@v2
     ...
     # In the steps below this you can use Graphviz dot command.
 ```
@@ -33,7 +33,7 @@ you can specify a specific version for each operating system (not macOS).
 
 ```yaml
 - name: Setup Graphviz
-  uses: ts-graphviz/setup-graphviz@v1
+  uses: ts-graphviz/setup-graphviz@v2
   with:
     # graphviz version on Ubuntu.
     ubuntu-graphviz-version: '2.42.2-3build2'
