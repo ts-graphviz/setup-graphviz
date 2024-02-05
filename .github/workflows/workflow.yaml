@@ -13,9 +13,10 @@ jobs:
     - name: Set Node.js 20.x
       uses: actions/setup-node@v4
       with:
-        version: 20.x
+        node-version: 20.x
+        cache: yarn
     - name: Install Dependencies
-      run: yarn install
+      run: yarn install --frozen-lockfile
     - if: matrix.os != 'windows-latest'
       name: Lint
       run: yarn lint
