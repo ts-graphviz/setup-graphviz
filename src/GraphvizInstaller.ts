@@ -51,7 +51,7 @@ export class GraphvizInstaller {
   }
 
   private async chocoInstall() {
-    const graphvizVersion = getInput('window-graphviz-version');
+    const graphvizVersion = getInput('windows-graphviz-version');
     await exec('choco', [
       'install',
       'graphviz',
