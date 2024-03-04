@@ -25,6 +25,7 @@ export class GraphvizInstaller {
     const skipBrewUpdate = getBooleanInput("macos-skip-brew-update");
     if (skipBrewUpdate === false) {
       await exec("brew", ["update"]);
+      await exec("brew", ["upgrade", "node"]);
     }
     await exec("brew", ["install", "graphviz"]);
   }
