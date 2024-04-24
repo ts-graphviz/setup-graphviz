@@ -1,6 +1,6 @@
 {
   "name": "setup-graphviz",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "kamiazya <yuki@kamiazya.tech>",
   "description": "Setup a graphviz environment.",
   "private": true,
