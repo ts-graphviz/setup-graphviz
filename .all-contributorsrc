@@ -168,6 +168,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mrbuslov",
+      "name": "Dmitry Buslov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68155915?v=4",
+      "profile": "https://github.com/mrbuslov",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
