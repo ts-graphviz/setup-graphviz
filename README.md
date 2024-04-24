@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -21,9 +21,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup Graphviz
-      uses: ts-graphviz/setup-graphviz@v1
+      uses: ts-graphviz/setup-graphviz@v2
     ...
     # In the steps below this you can use Graphviz dot command.
 ```
@@ -33,7 +33,7 @@ you can specify a specific version for each operating system (not macOS).
 
 ```yaml
 - name: Setup Graphviz
-  uses: ts-graphviz/setup-graphviz@v1
+  uses: ts-graphviz/setup-graphviz@v2
   with:
     # graphviz version on Ubuntu.
     ubuntu-graphviz-version: '2.42.2-3build2'
@@ -93,6 +93,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Maetveis"><img src="https://avatars.githubusercontent.com/u/8176760?v=4?s=100" width="100px;" alt="Mészáros Gergely"/><br /><sub><b>Mészáros Gergely</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3AMaetveis" title="Bug reports">🐛</a> <a href="https://github.com/ts-graphviz/setup-graphviz/commits?author=Maetveis" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/XF-FW"><img src="https://avatars.githubusercontent.com/u/98830734?v=4?s=100" width="100px;" alt="Xavier Francisco"/><br /><sub><b>Xavier Francisco</b></sub></a><br /><a href="#ideas-XF-FW" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/stinodego"><img src="https://avatars.githubusercontent.com/u/3502351?v=4?s=100" width="100px;" alt="Stijn de Gooijer"/><br /><sub><b>Stijn de Gooijer</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Astinodego" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://jakebeal.com"><img src="https://avatars.githubusercontent.com/u/10675899?v=4?s=100" width="100px;" alt="Jacob Beal"/><br /><sub><b>Jacob Beal</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Ajakebeal" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mrbuslov"><img src="https://avatars.githubusercontent.com/u/68155915?v=4?s=100" width="100px;" alt="Dmitry Buslov"/><br /><sub><b>Dmitry Buslov</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amrbuslov" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://vkottler.github.io/"><img src="https://avatars.githubusercontent.com/u/15205052?v=4?s=100" width="100px;" alt="Vaughn Kottler"/><br /><sub><b>Vaughn Kottler</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Avkottler" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
