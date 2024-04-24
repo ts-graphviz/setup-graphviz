@@ -1,6 +1,6 @@
 # `ts-graphviz/setup-graphviz` action
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 GitHub Action to set up Graphviz cross-platform(Linux, macOS, Windows).
@@ -96,6 +96,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://jakebeal.com"><img src="https://avatars.githubusercontent.com/u/10675899?v=4?s=100" width="100px;" alt="Jacob Beal"/><br /><sub><b>Jacob Beal</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Ajakebeal" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mrbuslov"><img src="https://avatars.githubusercontent.com/u/68155915?v=4?s=100" width="100px;" alt="Dmitry Buslov"/><br /><sub><b>Dmitry Buslov</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Amrbuslov" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://vkottler.github.io/"><img src="https://avatars.githubusercontent.com/u/15205052?v=4?s=100" width="100px;" alt="Vaughn Kottler"/><br /><sub><b>Vaughn Kottler</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Avkottler" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gpaulfleetwood"><img src="https://avatars.githubusercontent.com/u/56100336?v=4?s=100" width="100px;" alt="gpaulfleetwood"/><br /><sub><b>gpaulfleetwood</b></sub></a><br /><a href="https://github.com/ts-graphviz/setup-graphviz/issues?q=author%3Agpaulfleetwood" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
