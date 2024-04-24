@@ -13,6 +13,7 @@
   "scripts": {
     "lint": "biome check src",
     "format": "biome check --apply src",
+    "typecheck": "tsc --noEmit",
     "build": "tsc",
     "test": "vitest"
   },
