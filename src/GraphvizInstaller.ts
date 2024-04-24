@@ -34,6 +34,14 @@ export class GraphvizInstaller {
     const graphvizVersion = getInput("ubuntu-graphviz-version");
     const libgraphvizdevVersion = getInput("ubuntu-libgraphvizdev-version");
     if (skipAptUpdate === false) {
+      await exec("sudo", ["apt-get", "clean"]);
+      // https://github.com/actions/runner-images/issues/9733#issuecomment-2074565599
+      await exec("sudo", [
+        "sudo",
+        "rm",
+        "/etc/apt/sources.list.d/microsoft-prod.list",
+      ]);
+
       await exec("sudo", ["apt-get", "update"]);
     }
     await exec("sudo", [
