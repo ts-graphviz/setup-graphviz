@@ -166,21 +166,6 @@ describe("class GraphvizInstaller", () => {
                 "sudo",
                 [
                   "apt-get",
-                  "clean",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "sudo",
-                  "rm",
-                  "/etc/apt/sources.list.d/microsoft-prod.list",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "apt-get",
                   "update",
                 ],
               ],
@@ -217,21 +202,6 @@ describe("class GraphvizInstaller", () => {
 
           expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              [
-                "sudo",
-                [
-                  "apt-get",
-                  "clean",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "sudo",
-                  "rm",
-                  "/etc/apt/sources.list.d/microsoft-prod.list",
-                ],
-              ],
               [
                 "sudo",
                 [
@@ -274,21 +244,6 @@ describe("class GraphvizInstaller", () => {
                 "sudo",
                 [
                   "apt-get",
-                  "clean",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "sudo",
-                  "rm",
-                  "/etc/apt/sources.list.d/microsoft-prod.list",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "apt-get",
                   "update",
                 ],
               ],
@@ -323,21 +278,6 @@ describe("class GraphvizInstaller", () => {
 
           expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              [
-                "sudo",
-                [
-                  "apt-get",
-                  "clean",
-                ],
-              ],
-              [
-                "sudo",
-                [
-                  "sudo",
-                  "rm",
-                  "/etc/apt/sources.list.d/microsoft-prod.list",
-                ],
-              ],
               [
                 "sudo",
                 [
