@@ -168,6 +168,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "vkottler",
+      "name": "Vaughn Kottler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15205052?v=4",
+      "profile": "https://vkottler.github.io/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
