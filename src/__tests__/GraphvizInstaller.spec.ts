@@ -174,8 +174,7 @@ describe("class GraphvizInstaller", () => {
                 [
                   "sudo",
                   "rm",
-                  "-vf",
-                  "/var/lib/apt/lists/*",
+                  "/etc/apt/sources.list.d/microsoft-prod.list",
                 ],
               ],
               [
@@ -230,8 +229,7 @@ describe("class GraphvizInstaller", () => {
                 [
                   "sudo",
                   "rm",
-                  "-vf",
-                  "/var/lib/apt/lists/*",
+                  "/etc/apt/sources.list.d/microsoft-prod.list",
                 ],
               ],
               [
@@ -284,8 +282,7 @@ describe("class GraphvizInstaller", () => {
                 [
                   "sudo",
                   "rm",
-                  "-vf",
-                  "/var/lib/apt/lists/*",
+                  "/etc/apt/sources.list.d/microsoft-prod.list",
                 ],
               ],
               [
@@ -338,8 +335,7 @@ describe("class GraphvizInstaller", () => {
                 [
                   "sudo",
                   "rm",
-                  "-vf",
-                  "/var/lib/apt/lists/*",
+                  "/etc/apt/sources.list.d/microsoft-prod.list",
                 ],
               ],
               [
