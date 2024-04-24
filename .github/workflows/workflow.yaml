@@ -57,13 +57,15 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: lib
+          path: lib
 
   integration-test:
     name: Run
     runs-on: ${{ matrix.os }}
-    needs: build
+    needs:
+      - build
+      - unit-test
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
