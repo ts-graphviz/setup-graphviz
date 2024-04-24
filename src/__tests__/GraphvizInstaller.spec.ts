@@ -172,6 +172,15 @@ describe("class GraphvizInstaller", () => {
               [
                 "sudo",
                 [
+                  "sudo",
+                  "rm",
+                  "-vf",
+                  "/var/lib/apt/lists/*",
+                ],
+              ],
+              [
+                "sudo",
+                [
                   "apt-get",
                   "update",
                 ],
@@ -219,6 +228,15 @@ describe("class GraphvizInstaller", () => {
               [
                 "sudo",
                 [
+                  "sudo",
+                  "rm",
+                  "-vf",
+                  "/var/lib/apt/lists/*",
+                ],
+              ],
+              [
+                "sudo",
+                [
                   "apt-get",
                   "update",
                 ],
@@ -252,7 +270,6 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(3);
           expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
               [
@@ -260,6 +277,15 @@ describe("class GraphvizInstaller", () => {
                 [
                   "apt-get",
                   "clean",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "sudo",
+                  "rm",
+                  "-vf",
+                  "/var/lib/apt/lists/*",
                 ],
               ],
               [
@@ -305,6 +331,15 @@ describe("class GraphvizInstaller", () => {
                 [
                   "apt-get",
                   "clean",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "sudo",
+                  "rm",
+                  "-vf",
+                  "/var/lib/apt/lists/*",
                 ],
               ],
               [
