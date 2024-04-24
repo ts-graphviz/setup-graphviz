@@ -136,17 +136,18 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(1);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "sudo",
               [
-                "apt-get",
-                "install",
-                "-y",
-                "graphviz",
-                "libgraphviz-dev",
-                "pkg-config",
+                "sudo",
+                [
+                  "apt-get",
+                  "install",
+                  "-y",
+                  "graphviz",
+                  "libgraphviz-dev",
+                  "pkg-config",
+                ],
               ],
             ]
           `);
@@ -159,26 +160,32 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "sudo",
               [
-                "apt-get",
-                "update",
+                "sudo",
+                [
+                  "apt-get",
+                  "clean",
+                ],
               ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            [
-              "sudo",
               [
-                "apt-get",
-                "install",
-                "-y",
-                "graphviz",
-                "libgraphviz-dev",
-                "pkg-config",
+                "sudo",
+                [
+                  "apt-get",
+                  "update",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "apt-get",
+                  "install",
+                  "-y",
+                  "graphviz",
+                  "libgraphviz-dev",
+                  "pkg-config",
+                ],
               ],
             ]
           `);
@@ -200,26 +207,32 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "sudo",
               [
-                "apt-get",
-                "update",
+                "sudo",
+                [
+                  "apt-get",
+                  "clean",
+                ],
               ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            [
-              "sudo",
               [
-                "apt-get",
-                "install",
-                "-y",
-                "graphviz=1.1.1",
-                "libgraphviz-dev=2.2.2",
-                "pkg-config",
+                "sudo",
+                [
+                  "apt-get",
+                  "update",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "apt-get",
+                  "install",
+                  "-y",
+                  "graphviz=1.1.1",
+                  "libgraphviz-dev=2.2.2",
+                  "pkg-config",
+                ],
               ],
             ]
           `);
@@ -239,26 +252,33 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy).toBeCalledTimes(3);
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "sudo",
               [
-                "apt-get",
-                "update",
+                "sudo",
+                [
+                  "apt-get",
+                  "clean",
+                ],
               ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            [
-              "sudo",
               [
-                "apt-get",
-                "install",
-                "-y",
-                "graphviz=3.3.3",
-                "libgraphviz-dev",
-                "pkg-config",
+                "sudo",
+                [
+                  "apt-get",
+                  "update",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "apt-get",
+                  "install",
+                  "-y",
+                  "graphviz=3.3.3",
+                  "libgraphviz-dev",
+                  "pkg-config",
+                ],
               ],
             ]
           `);
@@ -278,26 +298,32 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(2);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "sudo",
               [
-                "apt-get",
-                "update",
+                "sudo",
+                [
+                  "apt-get",
+                  "clean",
+                ],
               ],
-            ]
-          `);
-          expect(execSpy.mock.calls[1]).toMatchInlineSnapshot(`
-            [
-              "sudo",
               [
-                "apt-get",
-                "install",
-                "-y",
-                "graphviz",
-                "libgraphviz-dev=4.4.4",
-                "pkg-config",
+                "sudo",
+                [
+                  "apt-get",
+                  "update",
+                ],
+              ],
+              [
+                "sudo",
+                [
+                  "apt-get",
+                  "install",
+                  "-y",
+                  "graphviz",
+                  "libgraphviz-dev=4.4.4",
+                  "pkg-config",
+                ],
               ],
             ]
           `);
@@ -327,13 +353,14 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(1);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "choco",
               [
-                "install",
-                "graphviz",
+                "choco",
+                [
+                  "install",
+                  "graphviz",
+                ],
               ],
             ]
           `);
@@ -349,14 +376,15 @@ describe("class GraphvizInstaller", () => {
 
           await installer.get();
 
-          expect(execSpy).toBeCalledTimes(1);
-          expect(execSpy.mock.calls[0]).toMatchInlineSnapshot(`
+          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
             [
-              "choco",
               [
-                "install",
-                "graphviz",
-                "--version=1.1.1",
+                "choco",
+                [
+                  "install",
+                  "graphviz",
+                  "--version=1.1.1",
+                ],
               ],
             ]
           `);

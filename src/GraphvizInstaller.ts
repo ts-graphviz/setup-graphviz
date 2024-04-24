@@ -34,6 +34,7 @@ export class GraphvizInstaller {
     const graphvizVersion = getInput("ubuntu-graphviz-version");
     const libgraphvizdevVersion = getInput("ubuntu-libgraphvizdev-version");
     if (skipAptUpdate === false) {
+      await exec("sudo", ["apt-get", "clean"]);
       await exec("sudo", ["apt-get", "update"]);
     }
     await exec("sudo", [
