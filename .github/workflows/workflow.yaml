@@ -61,7 +61,7 @@ jobs:
           path: lib
 
   integration-test:
-    name: Run
+    name: Integration Tests
     runs-on: ${{ matrix.os }}
     needs:
       - build
