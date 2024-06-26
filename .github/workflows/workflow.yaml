@@ -6,14 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
-        with:
-          node-version: 20.x
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Lint
         run: yarn lint
       - name: TypeCheck
@@ -24,19 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: check
     steps:
-    - name: Checkout
-      uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
-    - name: Set Node.js 20.x
-      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
-      with:
-        node-version: 20.x
-        cache: yarn
-    - name: Install Dependencies
-      run: yarn install --frozen-lockfile
-    - name: Test
-      run: yarn test
-    - name: Build
-      run: yarn build
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Test
+        run: yarn test
+      - name: Build
+        run: yarn build
 
   build:
     name: Build
@@ -44,14 +34,9 @@ jobs:
     needs: check
     steps:
       - name: Checkout
-        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
-        with:
-          node-version: 20.x
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Build
         run: yarn build
       - name: Upload Artifact
@@ -72,17 +57,32 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
-        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
-        with:
-          node-version: 20.x
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Download Artifact
         uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4.1.6
       - name: Run Integration Tests
         uses: ./
       - name: Graphviz test
         run: dot -V
+
+  versioning:
+    name: Versioning
+    runs-on: ubuntu-latest
+    needs:
+      - integration-test
+    permissions:
+      contents: write # Used to commit to "Version Packages" PR
+      pull-requests: write # Used to create "Version Packages" PR
+    if: ${{ github.event_name == 'push' && github.repository == 'ts-graphviz/setup-graphviz' && github.base_ref == 'refs/heads/main' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@aba318e9165b45b7948c60273e0b72fce0a64eb9 # v1.4.7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
