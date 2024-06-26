@@ -75,7 +75,7 @@ jobs:
     permissions:
       contents: write # Used to commit to "Version Packages" PR
       pull-requests: write # Used to create "Version Packages" PR
-    if: ${{ github.event_name == 'push' && github.repository == 'ts-graphviz/setup-graphviz' && github.base_ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' && github.repository == 'ts-graphviz/setup-graphviz' && github.ref == 'refs/heads/main' && success() }}
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
