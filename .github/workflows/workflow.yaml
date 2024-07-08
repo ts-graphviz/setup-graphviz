@@ -81,7 +81,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Download Artifact
-        uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4.1.6
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
       - name: Run Integration Tests
         uses: ./
       - name: Graphviz test
