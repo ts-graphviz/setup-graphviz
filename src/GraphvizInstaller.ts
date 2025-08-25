@@ -40,6 +40,7 @@ export class GraphvizInstaller {
       "apt-get",
       "install",
       "-y",
+      "--no-install-recommends",
       graphvizVersion ? `graphviz=${graphvizVersion}` : "graphviz",
       // https://github.com/pygraphviz/pygraphviz/issues/163#issuecomment-570770201
       libgraphvizdevVersion
