@@ -8,5 +8,12 @@ jobs:
   release:
     name: Release GitHub Actions
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: technote-space/release-github-actions@052f205daf62dff0c3ece009f07b38f3ec83e01a # v8.0.3
+        with:
+          ORIGINAL_TAG_PREFIX: source/
+       #- uses: JasonEtco/build-and-tag-action@v2
+       #  env:
+       #    GITHUB_TOKEN: ${{ github.token }}
