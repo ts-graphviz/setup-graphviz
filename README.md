@@ -47,6 +47,15 @@ you can specify a specific version for each operating system (not macOS).
     macos-skip-brew-update: 'true' # default false
 ```
 
+## Windows: checking the install
+
+On Windows, the action installs Graphviz with Chocolatey. When the Chocolatey
+community feed is unavailable, `choco install` can exit successfully without
+installing anything, so the action checks that `choco` succeeded and that
+`dot -V` runs afterwards. If not, the action runs `choco install graphviz --force` again after 30 and
+then 60 seconds, and fails the step if Graphviz is still missing after three
+attempts ([#649](https://github.com/ts-graphviz/setup-graphviz/issues/649)).
+
 ## See Also
 
 Graphviz-dot Test and Integration

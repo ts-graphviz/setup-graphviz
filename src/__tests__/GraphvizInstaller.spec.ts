@@ -18,6 +18,7 @@ import { GraphvizInstaller } from "../GraphvizInstaller";
 
 describe("class GraphvizInstaller", () => {
   let installer: GraphvizInstaller;
+  const sleep = vi.fn(async (_ms: number) => {});
   const originalPlatform = process.platform;
 
   const setPlatform = (platform: NodeJS.Platform) => {
@@ -36,7 +37,7 @@ describe("class GraphvizInstaller", () => {
   };
 
   beforeEach(() => {
-    installer = new GraphvizInstaller();
+    installer = new GraphvizInstaller({ sleep });
     vi.clearAllMocks();
   });
 
@@ -318,13 +319,17 @@ describe("class GraphvizInstaller", () => {
       });
 
       describe("inputs works", () => {
+        beforeEach(() => {
+          // choco and `dot -V` succeed.
+          vi.spyOn(exec, "exec").mockResolvedValue(0);
+        });
+
         test("graphviz version not set", async () => {
           (getInput as unknown as MockInstance).mockReturnValue("");
-          const execSpy = vi.spyOn(exec, "exec");
 
           await installer.get();
 
-          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
+          expect(vi.mocked(exec.exec).mock.calls).toMatchInlineSnapshot(`
             [
               [
                 "choco",
@@ -332,6 +337,18 @@ describe("class GraphvizInstaller", () => {
                   "install",
                   "graphviz",
                 ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+              [
+                "dot",
+                [
+                  "-V",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
               ],
             ]
           `);
@@ -343,11 +360,10 @@ describe("class GraphvizInstaller", () => {
             "windows-graphviz-version",
             "1.1.1",
           );
-          const execSpy = vi.spyOn(exec, "exec");
 
           await installer.get();
 
-          expect(execSpy.mock.calls).toMatchInlineSnapshot(`
+          expect(vi.mocked(exec.exec).mock.calls).toMatchInlineSnapshot(`
             [
               [
                 "choco",
@@ -356,9 +372,177 @@ describe("class GraphvizInstaller", () => {
                   "graphviz",
                   "--version=1.1.1",
                 ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+              [
+                "dot",
+                [
+                  "-V",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
               ],
             ]
           `);
+        });
+      });
+
+      describe("checks the install and tries again", () => {
+        beforeEach(() => {
+          (getInput as unknown as MockInstance).mockReturnValue("");
+        });
+
+        /** `dot -V` exits with these codes in turn; choco always exits 0. */
+        const dotExits = (...codes: (number | Error)[]) => {
+          const results = [...codes];
+          vi.spyOn(exec, "exec").mockImplementation(async (command) => {
+            if (command !== "dot") return 0;
+            const next = results.shift() ?? 1;
+            if (next instanceof Error) throw next;
+            return next;
+          });
+        };
+
+        test("installed at the first attempt: no retry", async () => {
+          dotExits(0);
+
+          await installer.get();
+
+          expect(vi.mocked(exec.exec).mock.calls.map(([c]) => c)).toEqual([
+            "choco",
+            "dot",
+          ]);
+          expect(sleep).not.toHaveBeenCalled();
+        });
+
+        test("missing after a silent choco failure, installed on retry with --force", async () => {
+          dotExits(new Error("Unable to locate executable file: dot."), 0);
+
+          await installer.get();
+
+          expect(vi.mocked(exec.exec).mock.calls).toMatchInlineSnapshot(`
+            [
+              [
+                "choco",
+                [
+                  "install",
+                  "graphviz",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+              [
+                "dot",
+                [
+                  "-V",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+              [
+                "choco",
+                [
+                  "install",
+                  "graphviz",
+                  "--force",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+              [
+                "dot",
+                [
+                  "-V",
+                ],
+                {
+                  "ignoreReturnCode": true,
+                },
+              ],
+            ]
+          `);
+          expect(sleep.mock.calls).toEqual([[30_000]]);
+        });
+
+        test("fails after three attempts, waiting 30 s and 60 s", async () => {
+          dotExits(1, 1, 1);
+
+          await expect(installer.get()).rejects.toThrow(
+            /Graphviz is not installed after 3 attempts of 'choco install graphviz' \('dot -V' fails\)\. The Chocolatey community feed may be unavailable/,
+          );
+          expect(
+            vi.mocked(exec.exec).mock.calls.filter(([c]) => c === "choco"),
+          ).toHaveLength(3);
+          expect(sleep.mock.calls).toEqual([[30_000], [60_000]]);
+        });
+
+        test("installed at the third attempt", async () => {
+          dotExits(1, 1, 0);
+
+          await installer.get();
+
+          expect(sleep.mock.calls).toEqual([[30_000], [60_000]]);
+          expect(
+            vi
+              .mocked(exec.exec)
+              .mock.calls.filter(([c]) => c === "choco")
+              .map(([, args]) => args),
+          ).toEqual([
+            ["install", "graphviz"],
+            ["install", "graphviz", "--force"],
+            ["install", "graphviz", "--force"],
+          ]);
+        });
+
+        test("retries keep the pinned version", async () => {
+          mockNamedInputs(
+            getInput as unknown as MockInstance,
+            "windows-graphviz-version",
+            "1.1.1",
+          );
+          dotExits(1, 0);
+
+          await installer.get();
+
+          expect(
+            vi
+              .mocked(exec.exec)
+              .mock.calls.filter(([c]) => c === "choco")
+              .map(([, args]) => args),
+          ).toEqual([
+            ["install", "graphviz", "--version=1.1.1"],
+            ["install", "graphviz", "--version=1.1.1", "--force"],
+          ]);
+        });
+
+        test("a dot already on the PATH does not make a failed install pass", async () => {
+          vi.spyOn(exec, "exec").mockImplementation(async (command) =>
+            command === "choco" ? 1 : 0,
+          );
+
+          await expect(installer.get()).rejects.toThrow(
+            /after 3 attempts of 'choco install graphviz' \('choco install' exits with code 1\)/,
+          );
+          expect(
+            vi.mocked(exec.exec).mock.calls.filter(([c]) => c === "dot"),
+          ).toHaveLength(0);
+        });
+
+        test("a failing choco exit code does not stop the retries", async () => {
+          let chocoRuns = 0;
+          vi.spyOn(exec, "exec").mockImplementation(async (command) => {
+            if (command === "choco") return ++chocoRuns === 1 ? 1 : 0;
+            return chocoRuns === 1 ? 1 : 0;
+          });
+
+          await installer.get();
+
+          expect(chocoRuns).toBe(2);
         });
       });
     });
