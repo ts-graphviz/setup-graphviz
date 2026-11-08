@@ -487,6 +487,16 @@ describe("class GraphvizInstaller", () => {
           await installer.get();
 
           expect(sleep.mock.calls).toEqual([[30_000], [60_000]]);
+          expect(
+            vi
+              .mocked(exec.exec)
+              .mock.calls.filter(([c]) => c === "choco")
+              .map(([, args]) => args),
+          ).toEqual([
+            ["install", "graphviz"],
+            ["install", "graphviz", "--force"],
+            ["install", "graphviz", "--force"],
+          ]);
         });
 
         test("retries keep the pinned version", async () => {
